@@ -14,9 +14,9 @@ Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& number
 
     if (nCount == 0) 
     {
-        sum = NAN;
-        max = NAN;
-        min = NAN;
+        sum = std::numeric_limits<double>::quiet_NaN();
+        max = std::numeric_limits<double>::quiet_NaN();
+        min = std::numeric_limits<double>::quiet_NaN();
     }
     else 
     {
