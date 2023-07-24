@@ -1,7 +1,11 @@
 #include "stats.h"
 #include<limits>
 
-Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& numbers) {
+#define MINIMUM_FLOAT std::numeric_limits<float>::min();
+#define MAXIMUM_FLOAT std::numeric_limits<float>::max();
+
+Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& numbers) 
+{
     std::size_t nCount = numbers.size();
 
     float sum;
@@ -10,25 +14,28 @@ Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& number
 
     if (nCount == 0) 
     {
-        sum = std::numeric_limits<double>::quiet_NaN();
-        max = std::numeric_limits<double>::quiet_NaN();
-        min = std::numeric_limits<double>::quiet_NaN();
+        sum = NAN;
+        max = NAN;
+        min = NAN;
     }
     else 
     {
         sum = 0.0;
-        max = std::numeric_limits<float>::min();
-        min = std::numeric_limits<float>::max();
+        max = MINIMUM_FLOAT;
+        min = MAXIMUM_FLOAT;
     }
     
-    for (float item : numbers) {
+    for (float item : numbers) 
+    {
         sum += item;
 
-        if (item > max) {
+        if (item > max) 
+        {
             max = item;
         }
 
-        if (item < min) {
+        if (item < min) 
+        {
             min = item;
         }
     }
