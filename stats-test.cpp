@@ -3,6 +3,10 @@
 #include "gtest/gtest.h"
 #include <cmath>
 
+#include"EmailAlert.h"
+#include"LEDAlert.h"
+#include"StatsAlerter.h"
+
 TEST(Statistics, ReportsAverageMinMax) {
     auto computedStats = Statistics::ComputeStatistics({1.5, 8.9, 3.2, 4.5});
     float epsilon = 0.001;
@@ -13,11 +17,9 @@ TEST(Statistics, ReportsAverageMinMax) {
 
 TEST(Statistics, AverageNaNForEmpty) {
     auto computedStats = Statistics::ComputeStatistics({});
-    //All fields of computedStats (average, max, min) must be
-    //NAN (not-a-number), as defined in math.h
-    
-    //Design the REQUIRE statement here.
-    //Use http://www.cplusplus.com/reference/cmath/isnan/
+    EXPECT_TRUE(std::isnan(computedStats.average));
+    EXPECT_TRUE(std::isnan(computedStats.max));
+    EXPECT_TRUE(std::isnan(computedStats.min));
 }
 
 TEST(Alert, AlertsWhenMaxExceeds) {
