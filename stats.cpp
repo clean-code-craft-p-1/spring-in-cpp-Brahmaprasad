@@ -3,9 +3,23 @@
 
 Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& numbers) {
     std::size_t nCount = numbers.size();
-    float sum = 0.0;
-    float max = std::numeric_limits<float>::min();
-    float min = std::numeric_limits<float>::max();
+
+    float sum;
+    float max;
+    float min;
+
+    if (nCount == 0) 
+    {
+        sum = std::numeric_limits<double>::quiet_NaN();
+        max = std::numeric_limits<double>::quiet_NaN();
+        min = std::numeric_limits<double>::quiet_NaN();
+    }
+    else 
+    {
+        sum = 0.0;
+        max = std::numeric_limits<float>::min();
+        min = std::numeric_limits<float>::max();
+    }
     
     for (float item : numbers) {
         sum += item;
