@@ -2,8 +2,8 @@
 class IAlerter
 {
 public:
-    IAlerter() {};
-    ~IAlerter() {};
+    IAlerter();
+    ~IAlerter();
     virtual void Alert() = 0;
 private:
 
