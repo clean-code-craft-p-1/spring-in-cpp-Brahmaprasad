@@ -2,7 +2,7 @@
 #include<limits>
 
 Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& numbers) {
-    size_t nCount = numbers.size();
+    std::size_t nCount = numbers.size();
     float sum = 0.0;
     float max = std::numeric_limits<float>::min();
     float min = std::numeric_limits<float>::max();
